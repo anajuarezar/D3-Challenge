@@ -28,5 +28,13 @@ var chartGroup = svg.append("g")
 
   d3.csv("data.csv").then(function(CensusData) {
 
+    // Step 1: Parse Data/Cast as numbers
+    // ==============================
+    CensusData.forEach(function(data) {
+      data.poverty = +data.poverty;
+      data.smokes = +data.smokes;
+    });
+
+
 
   })
