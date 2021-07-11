@@ -60,6 +60,32 @@ var chartGroup = svg.append("g")
     chartGroup.append("g")
       .call(leftAxis);
 
+    
+        // Step 5: Create Circles
+    // ==============================
+    var circlesGroup = chartGroup.selectAll("circle")
+    .data(CensusData)
+    .enter()
+    .append("circle")
+    .attr("cx", d => xLinearScale(d.poverty))
+    .attr("cy", d => yLinearScale(d.smokes))
+    .attr("r", "10")
+    .attr("fill", "blue")
+    .attr("opacity", ".2");
+
+
+
+    // Step 6: Initialize tool tip
+    // ==============================
+    var toolTip = d3.tip()
+      .attr("class", "tooltip")
+      .offset([80, -60])
+      .html(function(d) {
+        return (`${d.state}<br>Poverty: ${d.poverty}<br>Smokes: ${d.smokes}`);
+      });
+
+
+
 
 
 
