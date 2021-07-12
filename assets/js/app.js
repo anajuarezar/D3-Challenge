@@ -26,13 +26,14 @@ var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 
-  d3.csv("assets/data/data.cs").then(function(CensusData) {
+  d3.csv("assets/data/data.csv").then(function(CensusData) {
 
     // Step 1: Parse Data/Cast as numbers
     // ==============================
     CensusData.forEach(function(data) {
       data.poverty = +data.poverty;
       data.smokes = +data.smokes;
+      data.abbr = data.abbr;
     });
 
 
@@ -69,9 +70,27 @@ var chartGroup = svg.append("g")
     .append("circle")
     .attr("cx", d => xLinearScale(d.poverty))
     .attr("cy", d => yLinearScale(d.smokes))
-    .attr("r", "10")
+    .attr("r", "15")
     .attr("fill", "blue")
-    .attr("opacity", ".2");
+    .attr("stroke", "white")
+    .attr("opacity", ".5");
+
+    var circleText = chartGroup.selectAll(null).data(censusData).enter().append("text");
+
+    circleText
+    .attr("x", function(d) {
+      return xLinearScale(d.poverty);
+    })
+    .attr("y", function(d) {
+      return yLinearScale(d.smokes);
+    })
+    .text(function(d) {
+      return d.abbr;
+    })
+    .attr("font-family", "times")
+    .attr("font-size", "10px")
+    .attr("text-anchor", "middle")
+    .attr("fill", "black");
 
 
 
@@ -104,9 +123,8 @@ var chartGroup = svg.append("g")
     // ==============================
     chartGroup.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 0 - margin.left + 40)
+      .attr("y", 0 - margin.left + 15)
       .attr("x", 0 - (height / 2))
-      .attr("dy", "1em")
       .attr("class", "axisText")
       .text("Smokes");
 
