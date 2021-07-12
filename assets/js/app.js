@@ -40,11 +40,11 @@ var chartGroup = svg.append("g")
     // Step 2: Create scale functions
     // ==============================
     var xLinearScale = d3.scaleLinear()
-      .domain([20, d3.max(CensusData, d => d.poverty)])
+      .domain([d3.min(CensusData, d => d.poverty)*.95, d3.max(CensusData, d => d.poverty)])
       .range([0, width]);
 
     var yLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(CensusData, d => d.smokes)])
+      .domain([d3.min(CensusData, d => d.smokes)*.92, d3.max(CensusData, d => d.smokes)])
       .range([height, 0]);
 
      // Step 3: Create axis functions
@@ -71,9 +71,9 @@ var chartGroup = svg.append("g")
     .attr("cx", d => xLinearScale(d.poverty))
     .attr("cy", d => yLinearScale(d.smokes))
     .attr("r", "15")
-    .attr("fill", "blue")
-    .attr("stroke", "white")
-    .attr("opacity", ".5");
+    .attr("fill", "MediumPurple")
+    .attr("stroke", "Lavender")
+    .attr("opacity", ".8");
 
     var circleText = chartGroup.selectAll(null).data(censusData).enter().append("text");
 
@@ -90,7 +90,7 @@ var chartGroup = svg.append("g")
     .attr("font-family", "times")
     .attr("font-size", "10px")
     .attr("text-anchor", "middle")
-    .attr("fill", "black");
+    .attr("fill", "white");
 
 
 
