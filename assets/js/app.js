@@ -103,10 +103,11 @@ var chartGroup = svg.append("g")
 
     // Step 10: We name our axes
     // ==============================
+
     chartGroup.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 0 - margin.left + 15)
-      .attr("x", 0 - (height / 2))
+      .attr("y",300)
+      .attr("x",200)
       .attr("class", "axisText")
       .text("Smokes");
 
@@ -114,6 +115,12 @@ var chartGroup = svg.append("g")
       .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
       .attr("class", "axisText")
       .text("Poverty");
+
+    
+    // Step 11: We use this function to catch any erros and print them
+    // ==============================
+
+
   }).catch(function(error) {
     console.log(error);
   });
