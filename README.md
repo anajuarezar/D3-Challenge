@@ -1,6 +1,6 @@
 # D3 Homework - Data Journalism and D3
 
-![alt text](https://github.com/anajuarezar/D3-Challenge/blob/main/Images/ScatterPlot.png)
+![alt text](https://github.com/anajuarezar/D3-Challenge/blob/main/Images/solved.png)
 
 ## Core Assignment: D3 Dabbler (Required Assignment)
 
