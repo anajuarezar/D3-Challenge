@@ -84,7 +84,7 @@ var chartGroup = svg.append("g")
     // Step 9: We must fill the circles with the states' abbr
     // ==============================
 
-    var circleLabels = chartGroup.selectAll(null).data(censusData).enter().append("text");
+    var circleLabels = chartGroup.selectAll(null).data(CensusData).enter().append("text");
 
     circleLabels
     .attr("x", function(d) {
@@ -106,15 +106,15 @@ var chartGroup = svg.append("g")
 
     chartGroup.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y",300)
-      .attr("x",200)
+      .attr("y", 0 - margin.left + 50)
+      .attr("x", 0 - (height / 2))
       .attr("class", "axisText")
-      .text("Smokes");
+      .text("Smokes(%)");
 
     chartGroup.append("text")
       .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
       .attr("class", "axisText")
-      .text("Poverty");
+      .text("Poverty(%)");
 
     
     // Step 11: We use this function to catch any erros and print them
